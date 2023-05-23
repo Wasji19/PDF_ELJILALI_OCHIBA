@@ -48,6 +48,8 @@ namespace PDF_Wassim
             }
 
         public string Nom { get => nom; set => nom = value; }
+        public string Race { get => race; set => race = value; }
+        public string Race1 { get => race; set => race = value; }
 
         /// <summary>
         /// Affiche le nom et la race

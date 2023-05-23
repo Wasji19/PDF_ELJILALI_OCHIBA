@@ -40,6 +40,11 @@ namespace PDF_Wassim
         public void Afficher()
         {
             Console.WriteLine($"Poulailler {nomPoulailler}: la capacité maximale du poulailler {nomPoulailler} est de {capaciteMax}");
+            Console.WriteLine($"Liste des poules dans le poulailler {nomPoulailler}:");
+            foreach (Poule poule in poules)
+            {
+                Console.WriteLine(poule.Nom);
+            }
         }
         public void AjouterPoule(Poule poule)
         {
@@ -52,6 +57,36 @@ namespace PDF_Wassim
             {
                 Console.WriteLine($"Le poulailler {nomPoulailler} est déjà à sa capacité maximale de {capaciteMax} poules. Impossible d'ajouter une nouvelle poule.");
             }
+     
+        
+        }
+
+
+        public int NombreRacesDistinctes()
+        {
+            List<string> racesDistinctes = new List<string>();
+
+            for (int i = 0; i < poules.Count; i++)
+            {
+                string raceActuelle = poules[i].Race;
+                bool raceDejaComptee = false;
+
+                for (int j = 0; j < i; j++)
+                {
+                    if (poules[j].Race == raceActuelle)
+                    {
+                        raceDejaComptee = true;
+                        break;
+                    }
+                }
+
+                if (!raceDejaComptee)
+                {
+                    racesDistinctes.Add(raceActuelle);
+                }
+            }
+
+            return racesDistinctes.Count;
         }
     }
 }
