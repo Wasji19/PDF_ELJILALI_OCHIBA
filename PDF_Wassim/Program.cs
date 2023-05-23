@@ -11,13 +11,15 @@ namespace PDF_Wassim
             Poule taz = new Poule("Taz", "Charoloise", 2.4, Taille.XL);
             Poule klass = new Poule("Klass", "Penedesenca", 1.2, Taille.M);
 
-            Poulailler Annecy = new Poulailler("Annecy", 4, 15,ginger);
-            Poulailler Paris = new Poulailler("Paris", 5, 25, taz);
-            Poulailler Amiens= new Poulailler("Amiens", 3, 17, klass);
-
+            Poulailler Annecy = new Poulailler("Annecy",5);
+            Poulailler Paris = new Poulailler("Paris", 3);
+            Poulailler Amiens= new Poulailler("Amiens", 2);
+            Annecy.AjouterPoule(ginger);
+            Paris.AjouterPoule(taz);
+            Annecy.AjouterPoule(klass);
             // Affichage du Poulailler
             Annecy.Afficher();
-           ginger.Afficher();
+           
         }
     }
 }
