@@ -12,11 +12,7 @@ namespace PDF_Wassim
         /// </summary>
         public class Poule
         {
-            /// <summary>
-            /// numero d'identification de la poule
-            /// </summary>
-            /// <example>1.Germaine, 2.Roussette, 3.Ginger, 4.Raymonde</example>
-            /*int id;*/
+         
             /// <summary>
             /// Nom de la poule
             /// </summary>

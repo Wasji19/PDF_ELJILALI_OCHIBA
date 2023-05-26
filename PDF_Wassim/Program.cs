@@ -28,16 +28,21 @@ namespace PDF_Wassim
             Paris.AjouterPoule(Frost);
             Amiens.AjouterPoule(Bawita);
             Amiens.AjouterPoule(Aknani);
+            //Affichage simple 
+            Amiens.Afficher();
 
-            // Affichage du Poulailler
+            // Affichage du Poulailler et du test de la methode SupprimerPoule
             Annecy.Afficher();
-            Annecy.SupprimerPoule(0);
+            Annecy.SupprimerPoule(1);
             Annecy.Afficher();
-
+            // Affichage du Poulailler et du test de la methode SupprimerPoule dans le cas ou il n'y a pas de poule a l'emplacement saisie
             Paris.Afficher();
             Paris.SupprimerPoule(5);
             Paris.Afficher();
-
+            //deplacement d'une poule vers un autre poulailler
+            Annecy.DeplacerPoule(ginger, Paris);
+            Annecy.Afficher();
+            Paris.Afficher();
 
 
         }

@@ -24,7 +24,7 @@ namespace PDF_Wassim
 
 
         /// <summary>
-        /// Création d'une nouvelle instance d'un objet Poulailler
+        /// Création d'un Poulailler
         /// </summary>
         /// <param name="nomPll">Nom du Poulailler</param>
         /// <param name="capMax">capacité maximale d'un seul Poulailler</param>
@@ -35,8 +35,13 @@ namespace PDF_Wassim
             poules = new List<Poule>();
 
         }
+
+        /// <summary>
+        /// methode afficher qui affiche le Poulailler,sa capacité maxiamle,le nombre de poule et la liste des poules ajoutée
+        /// </summary>
         public void Afficher()
         {
+            Console.WriteLine();
             Console.WriteLine($"Poulailler {nomPoulailler}: la capacité maximale du poulailler {nomPoulailler} est de {capaciteMax}");
             Console.WriteLine($"Il y a {poules.Count} poules"); 
             Console.WriteLine($"Liste des poules dans le poulailler {nomPoulailler}:");
@@ -47,6 +52,11 @@ namespace PDF_Wassim
                 emplacement++;
             }
         }
+
+        /// <summary>
+        /// methode qui ajoute la poule au poulailler
+        /// </summary>
+        /// <param name="poule">objet poule</param>
         public void AjouterPoule(Poule poule)
         {
             if (poules.Count < capaciteMax)
@@ -62,7 +72,10 @@ namespace PDF_Wassim
      
         
         }
-
+        /// <summary>
+        /// methode qui supprime une poule en fonction de son numero d'identification
+        /// </summary>
+        /// <param name="id">numero d'indentification de la poule</param>
         public void SupprimerPoule(int id)
         {
             try
@@ -70,11 +83,32 @@ namespace PDF_Wassim
                 poules.RemoveAt(id);
             } catch
             {
-                Console.WriteLine("Impossible");
+                Console.WriteLine("Impossible d'effectuer la suppresion");
             }
         }
+        /// <summary>
+        /// Methode de deplcement d'une poule vers un autre poulailler
+        /// </summary>
+        /// <param name="poule">Poule qu'on veut deplacer</param>
+        /// <param name="autrePoulailler">Poulailler de destination</param>
+        public void DeplacerPoule(Poule poule, Poulailler autrePoulailler)
+        {
+            if (!poules.Contains(poule))
+            {
+                Console.WriteLine($"Le poulailler {nomPoulailler} ne contient pas la poule {poule.Nom}. Impossible de la déplacer.");
+                return;
+            }
 
+            if (autrePoulailler.poules.Count >= autrePoulailler.capaciteMax)
+            {
+                Console.WriteLine($"Le poulailler {autrePoulailler.nomPoulailler} est déjà à sa capacité maximale de {autrePoulailler.capaciteMax} poules. Impossible de déplacer la poule.");
+                return;
+            }
+            Console.WriteLine();
+            poules.Remove(poule);
+            autrePoulailler.AjouterPoule(poule);
+            Console.WriteLine($"La poule {poule.Nom} a été déplacée du poulailler {nomPoulailler} vers le poulailler {autrePoulailler.nomPoulailler}.");
+        }
 
-       
     }
 }
