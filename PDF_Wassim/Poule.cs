@@ -12,6 +12,12 @@ namespace PDF_Wassim
         /// </summary>
         public class Poule
         {
+            public int Id { get; set; }
+            /// <summary>
+            /// numero d'identification de la poule
+            /// </summary>
+            /// <example>1.Germaine, 2.Roussette, 3.Ginger, 4.Raymonde</example>
+            int id;
             /// <summary>
             /// Nom de la poule
             /// </summary>
@@ -39,8 +45,9 @@ namespace PDF_Wassim
             /// <param name="raceP">Race</param>
             /// <param name="intensiteP">Intensite de ponte</param>
             /// <param name="tailleP">Taille</param>
-            public Poule(string nomP, string raceP, double intensiteP, Taille tailleP)
+            public Poule(int idP,string nomP, string raceP, double intensiteP, Taille tailleP)
             {
+                id = idP;
                 nom = nomP;
                 race = raceP;
                 intensitePonte = intensiteP;
@@ -50,13 +57,14 @@ namespace PDF_Wassim
         public string Nom { get => nom; set => nom = value; }
         public string Race { get => race; set => race = value; }
         public string Race1 { get => race; set => race = value; }
+       
 
         /// <summary>
         /// Affiche le nom et la race
         /// </summary>
         public void Afficher()
             {
-                Console.WriteLine($"{nom} ({race})");
+                Console.WriteLine($"{id}.{nom} ({race})");
             }
         }
     }

@@ -43,13 +43,14 @@ namespace PDF_Wassim
             Console.WriteLine($"Liste des poules dans le poulailler {nomPoulailler}:");
             foreach (Poule poule in poules)
             {
-                Console.WriteLine(poule.Nom);
+                Console.WriteLine($"ID: {poule.Id}, Nom: {poule.Nom}, Race: {poule.Race}");
             }
         }
         public void AjouterPoule(Poule poule)
         {
             if (poules.Count < capaciteMax)
             {
+                poule.Id = GenererIdUnique(); // Attribution de l'ID unique
                 poules.Add(poule);
                 Console.WriteLine($"La poule {poule.Nom} a été ajoutée au poulailler {nomPoulailler}.");
             }
@@ -59,6 +60,15 @@ namespace PDF_Wassim
             }
      
         
+        }
+        private int GenererIdUnique()
+        {
+            // Génération d'un ID unique basé sur le nombre actuel de poules dans le poulailler
+            return poules.Count + 1;
+        }
+        public int CompterPoules()
+        {
+            return poules.Count;
         }
 
 
