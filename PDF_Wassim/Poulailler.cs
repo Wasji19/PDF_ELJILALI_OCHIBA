@@ -11,8 +11,6 @@ namespace PDF_Wassim
         /// </summary>
         /// <example>Paris,Marseille,Amiens,Annecy,etc</example>
         string nomPoulailler;
-        
-     
         /// <summary>
         /// capacité maximale d'un poulailler
         /// </summary>
@@ -40,63 +38,43 @@ namespace PDF_Wassim
         public void Afficher()
         {
             Console.WriteLine($"Poulailler {nomPoulailler}: la capacité maximale du poulailler {nomPoulailler} est de {capaciteMax}");
+            Console.WriteLine($"Il y a {poules.Count} poules"); 
             Console.WriteLine($"Liste des poules dans le poulailler {nomPoulailler}:");
+            int emplacement = 0;
             foreach (Poule poule in poules)
             {
-                Console.WriteLine($"ID: {poule.Id}, Nom: {poule.Nom}, Race: {poule.Race}");
+                Console.WriteLine($"ID: {emplacement}, Nom: {poule.Nom}, Race: {poule.Race}");
+                emplacement++;
             }
         }
         public void AjouterPoule(Poule poule)
         {
             if (poules.Count < capaciteMax)
             {
-                poule.Id = GenererIdUnique(); // Attribution de l'ID unique
                 poules.Add(poule);
                 Console.WriteLine($"La poule {poule.Nom} a été ajoutée au poulailler {nomPoulailler}.");
+               
             }
             else
             {
-                Console.WriteLine($"Le poulailler {nomPoulailler} est déjà à sa capacité maximale de {capaciteMax} poules. Impossible d'ajouter une nouvelle poule.");
+                Console.WriteLine($"Le poulailler {nomPoulailler} est déjà à sa capacité maximale de {capaciteMax} poules. Impossible d'ajouter une nouvelle poule.\n");
             }
      
         
         }
-        private int GenererIdUnique()
-        {
-            // Génération d'un ID unique basé sur le nombre actuel de poules dans le poulailler
-            return poules.Count + 1;
-        }
-        public int CompterPoules()
-        {
-            return poules.Count;
-        }
 
-
-        public int NombreRacesDistinctes()
+        public void SupprimerPoule(int id)
         {
-            List<string> racesDistinctes = new List<string>();
-
-            for (int i = 0; i < poules.Count; i++)
+            try
             {
-                string raceActuelle = poules[i].Race;
-                bool raceDejaComptee = false;
-
-                for (int j = 0; j < i; j++)
-                {
-                    if (poules[j].Race == raceActuelle)
-                    {
-                        raceDejaComptee = true;
-                        break;
-                    }
-                }
-
-                if (!raceDejaComptee)
-                {
-                    racesDistinctes.Add(raceActuelle);
-                }
+                poules.RemoveAt(id);
+            } catch
+            {
+                Console.WriteLine("Impossible");
             }
-
-            return racesDistinctes.Count;
         }
+
+
+       
     }
 }
